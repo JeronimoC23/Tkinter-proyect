@@ -15,6 +15,7 @@ from tkinter import *
 
 
 creador = "Jeronimo Clinaz"
+
 #Definicion de ventana
 ventana = Tk()
 
@@ -37,14 +38,15 @@ def add_product():
     ])
     name_data.set("")
     price_data.set("")
-    add_name_entry.delete("1.0", END)
-
+    add_description_entry.delete("1.0", END)
     print(products)
+    home()
     
 
 
 #Definir campos de pantalla (INICIO)}
 home_label = Label(ventana, text="Inicio")
+product_box = Frame(ventana, width=250)
 
 #Definir campos de pantalla (AGREGAR)}
 add_label = Label(ventana, text="Agregar productos")
@@ -80,6 +82,18 @@ def home():
         pady=20
     )
     home_label.grid(row=0, column=0)
+    
+    product_box.grid(row=1)
+
+    #Listar productos
+    for product in products:
+        if len(product) == 3:
+            product.append("Added")
+            Label(product_box, text=product[0]).grid()
+            Label(product_box, text=product[1]).grid()
+            Label(product_box, text=product[2]).grid()
+            Label(product_box,text="--------------").grid()
+
     cleanScreen("home")
   
 
@@ -93,7 +107,7 @@ def add():
         pady=20
     )
     add_label.grid(row=0, column=0,columnspan=4)
-    cleanScreen("add")
+    
 
     #Campos del formulario
     add_frame.grid(row=1)
@@ -124,6 +138,8 @@ def add():
 
     )
 
+    cleanScreen("add")
+
 
 def info():
     #Encabezado
@@ -145,14 +161,16 @@ def cleanScreen(screen):
         add_frame.grid_remove()
         info_label.grid_remove()
         data_label.grid_remove()
+        add_label.grid_remove()
     elif screen == "add":
         info_label.grid_remove()
         data_label.grid_remove()
         home_label.grid_remove()
+        product_box.grid_remove()
     elif screen == "info":
         home_label.grid_remove()
         add_frame.grid_remove()
-
+        product_box.grid_remove()
 
 
 #Cargar pantalla de inicio
