@@ -11,7 +11,7 @@ Programa:
 -opcion de salir
 """
 
-from tkinter import *
+from tkinter import * 
 
 
 creador = "Jeronimo Clinaz"
@@ -23,12 +23,32 @@ ventana.geometry("500x500")
 ventana.title("Proyecto Tkinter")
 ventana.resizable(0, 0)
 
+#Variables
+name_data=StringVar()
+price_data = IntVar()
+
+
+
 
 #Definir campos de pantalla (INICIO)}
 home_label = Label(ventana, text="Inicio")
 
 #Definir campos de pantalla (AGREGAR)}
 add_label = Label(ventana, text="Agregar productos")
+
+#Campos del formulario (ADD)
+add_name_label = Label(ventana, text="Nombre del producto:")
+add_name_entry = Entry(ventana, textvariable=name_data)
+
+add_price_label = Label(ventana, text="Precio del producto:")
+add_price_entry = Entry(ventana, textvariable=price_data)
+
+add_description_label = Label(ventana, text="Descripcion: ")
+add_description_entry = Text(ventana)
+
+boton = Button(ventana, text="Guardar")
+
+add_separator = Label(ventana)
 
 #Definir campos de pantalla (INFORMACION)}
 info_label = Label(ventana, text="Informacion")
@@ -41,7 +61,7 @@ def home():
         fg="white",
         bg="black",
         font=("Arial", 30),
-        padx=20,
+        padx=210,
         pady=20
     )
     home_label.grid(row=0, column=0)
@@ -49,22 +69,52 @@ def home():
   
 
 def add():
+    #Encabezado
     add_label.config(
         fg="white",
         bg="black",
         font=("Arial", 30),
-        padx=20,
+        padx=90,
         pady=20
     )
-    add_label.grid(row=0, column=0)
+    add_label.grid(row=0, column=0,columnspan=4)
     cleanScreen("add")
 
+    #Campos del formulario
+    add_name_label.grid(row=1,column=0, padx=5, pady=5)
+    add_name_entry.grid(row=1,column=1, padx=5, pady=5,sticky=W)
+
+    add_price_label.grid(row=2,column=0, padx=5, pady=5)
+    add_price_entry.grid(row=2,column=1, padx=5, pady=5,sticky=W)
+
+    add_description_label.grid(row=3,column=0, padx=5, pady=5, sticky=NW)
+    add_description_entry.grid(row=3,column=1, padx=5, pady=5,sticky=W)
+    add_description_entry.config(
+        width=30,
+        height=5,
+        font=("Consolas", 12),
+        padx=15,
+        pady=15
+    )
+
+    add_separator.grid(row=4, column=1)
+
+    boton.grid(row=5,column=1, sticky=NW)
+    boton.config(
+        padx=15,
+        bg="black",
+        fg="green",
+
+    )
+
+
 def info():
+    #Encabezado
     info_label.config(
         fg="white",
         bg="black",
         font=("Arial", 30),
-        padx=20,
+        padx=160,
         pady=20
     )
     info_label.grid(row=0, column=0)
