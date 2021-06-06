@@ -3,7 +3,7 @@ Programa:
 -ventana
 -tamaño fijo
 -no redimencionable
--un menu
+-un menu (Inicio, Añadir, Informacion, Salir)
 -diferentes pantallas
 -formulario para añadir productos
 -guardar datos (temporalmente)
@@ -13,20 +13,26 @@ Programa:
 
 from tkinter import *
 
-#Definicion de pantalla
+#Definicion de ventana
 ventana = Tk()
 
-#Confiruaciones de pantalla
+#Confiruaciones de ventana
 ventana.geometry("500x500")
 ventana.title("Proyecto Tkinter")
 ventana.resizable(0, 0)
 
+#Menu superior
+menu_superior = Menu(ventana)
+menu_superior.add_command(label="Inicio")
+menu_superior.add_command(label="Añadir")
+menu_superior.add_command(label="Informacion")
+menu_superior.add_command(label="Salir", command=ventana.quit)
+
+#Cargar menu
+ventana.config(menu=menu_superior)
 
 
 
 
-
-
-
-#Funcion de la ventana
+#Funcion de carga de la ventana
 ventana.mainloop()
