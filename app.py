@@ -24,10 +24,23 @@ ventana.title("Proyecto Tkinter")
 ventana.resizable(0, 0)
 
 #Variables
+products = []
 name_data=StringVar()
 price_data = IntVar()
 
+#Funcion agregar
+def add_product():
+    products.append([
+        name_data.get(),
+        price_data.get(),
+        add_description_entry.get("1.0", "end-1c")
+    ])
+    name_data.set("")
+    price_data.set("")
+    add_name_entry.delete("1.0", END)
 
+    print(products)
+    
 
 
 #Definir campos de pantalla (INICIO)}
@@ -48,7 +61,7 @@ add_price_entry = Entry(add_frame, textvariable=price_data)
 add_description_label = Label(add_frame, text="Descripcion: ")
 add_description_entry = Text(add_frame)
 
-boton = Button(add_frame, text="Guardar")
+boton = Button(add_frame, text="Guardar", command=add_product)
 
 add_separator = Label(add_frame)
 
@@ -141,7 +154,7 @@ def cleanScreen(screen):
         add_frame.grid_remove()
 
 
-  
+
 #Cargar pantalla de inicio
 home()
 
