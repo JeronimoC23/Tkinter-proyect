@@ -20,7 +20,8 @@ creador = "Jeronimo Clinaz"
 ventana = Tk()
 
 #Confiruaciones de ventana
-ventana.geometry("500x500")
+#ventana.geometry("500x500")
+ventana.minsize(500, 500)
 ventana.title("Proyecto Tkinter")
 ventana.resizable(0, 0)
 
