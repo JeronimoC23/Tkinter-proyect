@@ -37,18 +37,20 @@ home_label = Label(ventana, text="Inicio")
 add_label = Label(ventana, text="Agregar productos")
 
 #Campos del formulario (ADD)
-add_name_label = Label(ventana, text="Nombre del producto:")
-add_name_entry = Entry(ventana, textvariable=name_data)
+add_frame = Frame(ventana)
 
-add_price_label = Label(ventana, text="Precio del producto:")
-add_price_entry = Entry(ventana, textvariable=price_data)
+add_name_label = Label(add_frame, text="Nombre del producto:")
+add_name_entry = Entry(add_frame, textvariable=name_data)
 
-add_description_label = Label(ventana, text="Descripcion: ")
-add_description_entry = Text(ventana)
+add_price_label = Label(add_frame, text="Precio del producto:")
+add_price_entry = Entry(add_frame, textvariable=price_data)
 
-boton = Button(ventana, text="Guardar")
+add_description_label = Label(add_frame, text="Descripcion: ")
+add_description_entry = Text(add_frame)
 
-add_separator = Label(ventana)
+boton = Button(add_frame, text="Guardar")
+
+add_separator = Label(add_frame)
 
 #Definir campos de pantalla (INFORMACION)}
 info_label = Label(ventana, text="Informacion")
@@ -81,6 +83,8 @@ def add():
     cleanScreen("add")
 
     #Campos del formulario
+    add_frame.grid(row=1)
+    
     add_name_label.grid(row=1,column=0, padx=5, pady=5)
     add_name_entry.grid(row=1,column=1, padx=5, pady=5,sticky=W)
 
@@ -125,7 +129,7 @@ def info():
 def cleanScreen(screen):
     #Ocultar otras pantallas
     if screen == "home" :
-        add_label.grid_remove()
+        add_frame.grid_remove()
         info_label.grid_remove()
         data_label.grid_remove()
     elif screen == "add":
@@ -134,7 +138,7 @@ def cleanScreen(screen):
         home_label.grid_remove()
     elif screen == "info":
         home_label.grid_remove()
-        add_label.grid_remove()
+        add_frame.grid_remove()
 
 
   
